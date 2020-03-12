@@ -110,7 +110,7 @@
     # because it blindly picks a mon, which may be down because
     # of the rolling update
     - name: is ceph running already?
-      command: "{{ timeout_command }} {{ _container_exec_cmd | default('') }} ceph --cluster {{ cluster }} -s -f json"
+      command: "timeout 5 {{ _container_exec_cmd | default('') }} ceph --cluster {{ cluster }} -s -f json"
       changed_when: false
       failed_when: false
       check_mode: no
